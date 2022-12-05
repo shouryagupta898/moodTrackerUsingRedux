@@ -23,7 +23,7 @@ const HappyIncrementor: FC = () => {
       <button
         className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2"
         onClick={() => {
-          dispatch({ type: "happy button clicked", payload: quantity });
+          dispatch(happyButtonClicked(quantity));
         }}
       >
         Yes
