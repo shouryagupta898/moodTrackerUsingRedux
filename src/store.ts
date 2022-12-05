@@ -11,14 +11,24 @@ const initialState = {
   happyCount: 0,
 };
 
-const reducer = (currentState: State = initialState, action: AnyAction): State => {
-  if (action.type === HAPPY_BUTTON_CLICKED) {
-    return { ...currentState, happyCount: currentState.happyCount + action.payload }; // obj {} return ho rha h
-  } else if (action.type === SAD_BUTTON_CLICKED) {
-    return { ...currentState, sadCount: currentState.sadCount + action.payload };
+const reducer = (
+  currentState: State = initialState,
+  action: AnyAction
+): State => {
+  switch (action.type) {
+    case HAPPY_BUTTON_CLICKED:
+      return {
+        ...currentState,
+        happyCount: currentState.happyCount + action.payload,
+      };
+    case SAD_BUTTON_CLICKED:
+      return {
+        ...currentState,
+        sadCount: currentState.sadCount + action.payload,
+      };
+    default:
+      return currentState;
   }
-
-  return currentState;
 };
 
 const store = createStore(
@@ -26,6 +36,5 @@ const store = createStore(
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
-
 
 export default store;
