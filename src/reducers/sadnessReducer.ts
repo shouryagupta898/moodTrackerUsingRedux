@@ -1,5 +1,8 @@
 import { AnyAction } from "redux";
-import { SAD_BUTTON_CLICKED } from "../action";
+import {
+  SAD_BUTTON_CLICKED,
+  SAD_CLEAR_CLICKED,
+} from "../action";
 import { Moment } from "../store";
 
 export interface SadState {
@@ -19,6 +22,11 @@ const sadnessReducer = (currentSadState: SadState, action: AnyAction) => {
           ...currentSadState.sadMoment,
           { intensity: action.payload.count, when: action.payload.when },
         ],
+      };
+    case SAD_CLEAR_CLICKED:
+      return {
+        ...currentSadState,
+        sadMoment: [],
       };
 
     default:

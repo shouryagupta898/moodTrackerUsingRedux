@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { HAPPY_BUTTON_CLICKED } from "../action";
+import { HAPPY_BUTTON_CLICKED, HAPPY_CLEAR_BUTTON } from "../action";
 import { Moment } from "../store";
 
 export interface HappyState {
@@ -20,6 +20,9 @@ const happinessReducer = (currentHappyState: HappyState, action: AnyAction) => {
           { intensity: action.payload.count, when: action.payload.when },
         ],
       };
+
+    case HAPPY_CLEAR_BUTTON:
+      return { ...currentHappyState, happyMoment: [] };
 
     default:
       return currentHappyState;

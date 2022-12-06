@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { happyButtonClicked } from "./action";
+import { happyButtonClicked, happyClearButton } from "./action";
 
 const HappyIncrementor: FC = () => {
   const [quantity, setQuantity] = useState(0);
@@ -28,7 +28,7 @@ const HappyIncrementor: FC = () => {
       >
         Yes
       </button>
-      <button className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2" >clear</button>
+      <button className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2" onClick={()=>{dispatch(happyClearButton())}}>clear</button>
     </div>
   );
 };
