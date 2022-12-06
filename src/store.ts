@@ -1,34 +1,37 @@
-import { Action, AnyAction, createStore } from "redux";
-import { HAPPY_BUTTON_CLICKED, SAD_BUTTON_CLICKED } from "./action";
+import { AnyAction, createStore } from "redux";
+import happinessReducer, {
+  HappyState,
+  initialHappyState,
+} from "./reducers/happinessReducer";
+import sadnessReducer, {
+  initialSadState,
+  SadState,
+} from "./reducers/sadnessReducer";
 
+export interface Moment {
+  intensity: number;
+  when: Date;
+}
 export interface State {
-  sadCount: number;
-  happyCount: number;
+  happy: HappyState;
+
+  sad: SadState;
 }
 
-const initialState = {
-  sadCount: 0,
-  happyCount: 0,
+const initialState: State = {
+  happy: initialHappyState,
+
+  sad: initialSadState,
 };
 
-const reducer = (
-  currentState: State = initialState,
-  action: AnyAction
-): State => {
-  switch (action.type) {
-    case HAPPY_BUTTON_CLICKED:
-      return {
-        ...currentState,
-        happyCount: currentState.happyCount + action.payload,
-      };
-    case SAD_BUTTON_CLICKED:
-      return {
-        ...currentState,
-        sadCount: currentState.sadCount + action.payload,
-      };
-    default:
-      return currentState;
-  }
+// reducer has to be non-mutating
+// reducer has to be a pure function
+
+const reducer = (currentState = initialState, action: AnyAction): State => {
+  return {
+    happy: happinessReducer(currentState.happy, action),
+    sad: sadnessReducer(currentState.sad, action),
+  };
 };
 
 const store = createStore(

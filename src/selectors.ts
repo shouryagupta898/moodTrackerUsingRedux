@@ -1,9 +1,9 @@
 import { State } from "./store";
 
-export const happyCountSelector = (state: State) => {
-  return state.happyCount;
+export const happyMomentsSelector = (state: State) => {
+  return state.happy.happyMoment;
 };
 
-export const sadCountSelector = (state: State) => {
-  return state.sadCount;
+export const sadMomentsSelector = (state: State) => {
+  return state.sad.sadMoment;
 };

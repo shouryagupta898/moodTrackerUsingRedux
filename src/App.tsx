@@ -6,12 +6,12 @@ import SadTracker from "./SadTracker";
 
 const App: FC = () => {
   return (
-    <div className="flex space-x-4 justify-center mt-5">
-      <div className="flex flex-col items-center space-y-4 border border-black p-4">
+    <div className="flex flex-col border border-black max-w-5xl mx-auto items-center space-y-4 mt-4 pb-4 px-4">
+      <div className="flex flex-col border border-black mt-4 w-full p-2">
         <HappyTracker />
         <HappyIncrementor />
       </div>
-      <div className="flex flex-col items-center space-y-4 border border-black p-4">
+      <div className="flex flex-col border border-black w-full p-2 ">
         <SadTracker />
         <SadIncrementor />
       </div>
