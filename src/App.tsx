@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Button from "./Button";
 import HappyIncrementor from "./HappyIncrementor";
 import HappyTracker from "./HappyTracker";
 import SadIncrementor from "./SadIncrementor";
@@ -15,6 +16,7 @@ const App: FC = () => {
         <SadTracker />
         <SadIncrementor />
       </div>
+      {/* <Button className="bg-cyan-900" onClick={() => console.log("hello")}>hello</Button> */}
     </div>
   );
 };

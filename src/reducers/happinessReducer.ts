@@ -1,3 +1,4 @@
+import produce from "immer";
 import { AnyAction } from "redux";
 import { HAPPY_BUTTON_CLICKED, HAPPY_CLEAR_BUTTON } from "../action";
 import { Moment } from "../store";
@@ -10,16 +11,27 @@ export const initialHappyState: HappyState = {
   happyMoment: [],
 };
 
-const happinessReducer = (currentHappyState: HappyState, action: AnyAction) => {
+const happinessReducer = (
+  currentHappyState = initialHappyState,
+  action: AnyAction
+): HappyState => {
   switch (action.type) {
     case HAPPY_BUTTON_CLICKED:
-      return {
-        ...currentHappyState,
-        happyMoment: [
-          ...currentHappyState.happyMoment,
-          { intensity: action.payload.count, when: action.payload.when },
-        ],
-      };
+      // const newHappyMoment = {
+      //   intensity: action.payload.count,
+      //   when: action.payload.when,
+      // };
+      // return {
+      //   ...currentHappyState,
+      //   happyMoment: [
+      //     ...currentHappyState.happyMoment,
+      //     { intensity: action.payload.count, when: action.payload.when },
+      //   ],
+      // };
+
+      return produce(currentHappyState, (draft) => {
+        draft.happyMoment.push(action.payload);
+      });
 
     case HAPPY_CLEAR_BUTTON:
       return { ...currentHappyState, happyMoment: [] };

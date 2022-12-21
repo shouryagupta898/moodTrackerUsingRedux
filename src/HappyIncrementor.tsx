@@ -24,11 +24,19 @@ const HappyIncrementor: FC = () => {
         className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2"
         onClick={() => {
           dispatch(happyButtonClicked(quantity, new Date()));
+          setQuantity(0);
         }}
       >
         Yes
       </button>
-      <button className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2" onClick={()=>{dispatch(happyClearButton())}}>clear</button>
+      <button
+        className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2"
+        onClick={() => {
+          dispatch(happyClearButton());
+        }}
+      >
+        clear
+      </button>
     </div>
   );
 };

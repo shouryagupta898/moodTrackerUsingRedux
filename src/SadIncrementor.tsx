@@ -24,13 +24,20 @@ const SadIncrementor: FC = () => {
       <button
         className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2"
         onClick={() => {
-          dispatch(sadButtonClicked(quantity,new Date()));
+          dispatch(sadButtonClicked(quantity, new Date()));
+          setQuantity(0);
         }}
       >
         Yes
       </button>
-      <button className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2" onClick={()=>{dispatch(sadClearButton())}}>clear</button>
-
+      <button
+        className="border border-black bg-red-500 text-white px-2 py-1 rounded-md mt-2 ml-2"
+        onClick={() => {
+          dispatch(sadClearButton());
+        }}
+      >
+        clear
+      </button>
     </div>
   );
 };

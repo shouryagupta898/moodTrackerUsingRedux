@@ -11,7 +11,7 @@ const HappyTracker: FC = () => {
       {happyMoment.map((m) => (
         <div key={m.intensity}>
           <>
-            Happiness Intensity:{m.intensity},  when:{m.when.toISOString()}
+            Happiness Intensity:{m.intensity}, when:{m.when.toISOString()}
           </>
         </div>
       ))}
